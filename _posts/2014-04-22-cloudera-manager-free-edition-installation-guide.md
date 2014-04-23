@@ -178,3 +178,5 @@ Note: If the installation is failed on some of the hosts, click the “Retry” 
 ![](https://zhuliuw.github.io/assets/images/42.jpg)
 ![](https://zhuliuw.github.io/assets/images/43.jpg)
 ![](https://zhuliuw.github.io/assets/images/44.jpg)
+
+the installation is now done.
