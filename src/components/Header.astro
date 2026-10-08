@@ -1,0 +1,43 @@
+---
+const path = Astro.url.pathname;
+const items = [
+  { href: '/', label: '文章' },
+  { href: '/archive/', label: '归档' },
+  { href: '/tags/', label: '标签' },
+  { href: '/about/', label: '关于' },
+];
+
+function current(href: string) {
+  if (href === '/') return path === '/';
+  return path === href || path.startsWith(href);
+}
+---
+
+<header class="site-header">
+  <a class="brand" href="/">zhuliuwu</a>
+  <nav class="nav" aria-label="主导航">
+    {
+      items.map((item) => (
+        <a href={item.href} aria-current={current(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))
+    }
+    <button class="theme-btn" id="theme-toggle" type="button">深色</button>
+  </nav>
+</header>
+
+<script>
+  const button = document.getElementById('theme-toggle');
+  const sync = () => {
+    if (!button) return;
+    button.textContent = document.documentElement.dataset.theme === 'dark' ? '浅色' : '深色';
+  };
+  sync();
+  button?.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+    sync();
+  });
+</script>

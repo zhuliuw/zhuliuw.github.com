@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPosts } from '../../lib/blog';
+
+const posts = await getPosts();
+const counts = new Map<string, number>();
+for (const post of posts) {
+  const names = new Set([post.data.category, ...post.data.tags]);
+  for (const name of names) {
+    counts.set(name, (counts.get(name) ?? 0) + 1);
+  }
+}
+const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'zh'));
+---
+
+<Base title="标签" description="按标签和分类浏览 zhuliuwu 的文章。">
+  <div class="page">
+    <p class="eyebrow">Tags</p>
+    <h1>标签</h1>
+    <p class="intro">分类和标签放在一起。文章少的时候，这样翻起来更直接。</p>
+    <div class="tag-cloud">
+      {
+        tags.map(([name, count]) => (
+          <a href={`/tags/${encodeURIComponent(name)}/`}>
+            {name} · {count}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Base>

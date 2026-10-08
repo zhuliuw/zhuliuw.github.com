@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import { formatDateShort, getPosts, postHref } from '../../lib/blog';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const names = new Set<string>();
+  for (const post of posts) {
+    names.add(post.data.category);
+    for (const tag of post.data.tags) names.add(tag);
+  }
+  return [...names].map((tag) => ({
+    params: { tag },
+    props: { tag },
+  }));
+}
+
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+const posts = (await getPosts()).filter(
+  (post) => post.data.category === tag || post.data.tags.includes(tag),
+);
+---
+
+<Base title={tag} description={`标签「${tag}」下的文章。`}>
+  <div class="page">
+    <p class="eyebrow">Tag</p>
+    <h1>{tag}</h1>
+    <p class="intro">{posts.length} 篇</p>
+    <ol class="entry-list">
+      {
+        posts.map((post) => (
+          <li class="entry">
+            <time datetime={post.data.pubDate.toISOString()}>{formatDateShort(post.data.pubDate)}</time>
+            <div>
+              <h2>
+                <a href={postHref(post)}>{post.data.title}</a>
+              </h2>
+              <p>{post.data.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</Base>
