@@ -6,7 +6,7 @@ export async function GET(context: APIContext) {
   const posts = await getPosts();
   return rss({
     title: 'zhuliuwu',
-    description: 'zhuliuwu 的个人博客。技术只是一个生存的工具。',
+    description: 'zhuliuwu 的个人博客。热爱生活，热爱运动，热爱户外。',
     site: context.site ?? 'https://zhuliuw.github.io',
     trailingSlash: true,
     items: posts.map((post) => ({

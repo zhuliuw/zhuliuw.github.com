@@ -1,6 +1,6 @@
 zhuliuwu 的个人博客。
 
-本人博客从事 Java 相关技术的开发。技术只是一个生存的工具。
+热爱生活，热爱运动，热爱户外。喜欢探索新事物，不安于现状。
 
 站点用 [Astro](https://astro.build) 和 Tailwind CSS 生成静态页面，文章是 `src/content/blog` 里的 Markdown。
 
