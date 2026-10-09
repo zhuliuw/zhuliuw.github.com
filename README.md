@@ -14,3 +14,5 @@ npm run dev
 推到 `master` 后，GitHub Actions 会发布到 GitHub Pages。仓库的 Pages 来源需要设成 GitHub Actions。
 
 新文章：在 `src/content/blog` 新建一个 `.md`，写上 `title`、`description`、`pubDate`、`category`、`tags`。图片放在 `public/images`，文中用 `/images/文件名`。
+
+AI 系列的题目和每天的写法在 `series/ai.md`。每天一篇由 Cursor Automation 定时触发，仓库里没有第二个定时器。
