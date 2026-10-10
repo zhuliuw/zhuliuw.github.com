@@ -48,7 +48,7 @@ A standalone version of the same lesson. Same example, same claims, written in c
 
 ## 清单
 
-- [ ] 01 模型在做什么：接下去最可能的下一段
+- [x] 01 模型在做什么：接下去最可能的下一段（2026-10-10，/2026/10/10/next-likely-span/）
 - [ ] 02 Token：模型看见的不是字，是切好的片段
 - [ ] 03 一次回复是怎么一个片段一个片段算出来的
 - [ ] 04 上下文窗口：这一次它能看见多少
