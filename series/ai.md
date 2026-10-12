@@ -50,7 +50,7 @@ A standalone version of the same lesson. Same example, same claims, written in c
 
 - [x] 01 模型在做什么：接下去最可能的下一段（2026-10-10，/2026/10/10/next-likely-span/）
 - [x] 02 Token：模型看见的不是字，是切好的片段（2026-10-11，/2026/10/11/tokens-not-characters/）
-- [ ] 03 一次回复是怎么一个片段一个片段算出来的
+- [x] 03 一次回复是怎么一个片段一个片段算出来的（2026-10-12，/2026/10/12/one-piece-at-a-time/）
 - [ ] 04 上下文窗口：这一次它能看见多少
 - [ ] 05 提示词：你交给它的全部材料
 - [ ] 06 对话里的三种角色：系统、用户、模型
