@@ -59,7 +59,7 @@ A standalone version of the same lesson. Same example, same claims, written in c
 - [x] 09 让回答按约定的格式出现（2026-10-18，/2026/10/18/agreed-format/）
 - [x] 10 长资料进不了窗口：检索是在补这一刀（2026-10-19，/2026/10/19/retrieval-fills-the-gap/）
 - [x] 11 嵌入：用一组数表示像不像（2026-10-20，/2026/10/20/alike-by-numbers/）
-- [ ] 12 工具：模型接触外部世界的唯一方式
+- [x] 12 工具：模型接触外部世界的唯一方式（2026-10-21，/2026/10/21/only-through-a-tool/）
 - [ ] 13 一次工具调用里，模型、运行时、观察各做哪一步
 - [ ] 14 智能体：目标加上会停下来再出发的循环
 - [ ] 15 记忆：留在窗口里的，和写在窗口外的
