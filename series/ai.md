@@ -68,7 +68,7 @@ A standalone version of the same lesson. Same example, same claims, written in c
 - [x] 18 哪些动作必须先问人（2026-10-27，/2026/10/27/must-ask-first/）
 - [x] 19 怎么判断它做对了：例子、对照和失败样本（2026-10-28，/2026/10/28/examples-checks-failures/）
 - [x] 20 错误怎样留在历史里，并污染下一步（2026-10-29，/2026/10/29/error-stays-in-history/）
-- [ ] 21 多个智能体分工时，谁拿目标，谁拿观察
+- [x] 21 多个智能体分工时，谁拿目标，谁拿观察（2026-10-31，/2026/10/31/who-holds-goal-and-observation/）
 - [ ] 22 费用、延迟和步数是同一笔账
 - [ ] 23 改行为的三种办法：提示、检索、微调
 - [ ] 24 训练、权重和推理不是同一件事
