@@ -70,7 +70,7 @@ A standalone version of the same lesson. Same example, same claims, written in c
 - [x] 20 错误怎样留在历史里，并污染下一步（2026-10-29，/2026/10/29/error-stays-in-history/）
 - [x] 21 多个智能体分工时，谁拿目标，谁拿观察（2026-10-31，/2026/10/31/who-holds-goal-and-observation/）
 - [x] 22 费用、延迟和步数是同一笔账（2026-11-02，/2026/11/02/the-same-bill/）
-- [ ] 23 改行为的三种办法：提示、检索、微调
+- [x] 23 改行为的三种办法：提示、检索、微调（2026-11-03，/2026/11/03/three-ways-to-change/）
 - [ ] 24 训练、权重和推理不是同一件事
 - [ ] 25 对齐在执行里表现为什么：拒绝、确认、边界
 - [ ] 26 基准数字在说什么，又没说什么
