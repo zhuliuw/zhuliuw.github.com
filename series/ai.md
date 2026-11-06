@@ -73,6 +73,6 @@ A standalone version of the same lesson. Same example, same claims, written in c
 - [x] 23 改行为的三种办法：提示、检索、微调（2026-11-03，/2026/11/03/three-ways-to-change/）
 - [x] 24 训练、权重和推理不是同一件事（2026-11-04，/2026/11/04/not-the-same-job/）
 - [x] 25 对齐在执行里表现为什么：拒绝、确认、边界（2026-11-05，/2026/11/05/refusal-confirm-boundary/）
-- [ ] 26 基准数字在说什么，又没说什么
+- [x] 26 基准数字在说什么，又没说什么（2026-11-06，/2026/11/06/what-the-number-counts/）
 - [ ] 27 把一个最小循环接到自己的仓库
 - [ ] 28 从这一系列里留下可以自己改的一张执行图
