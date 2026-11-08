@@ -75,4 +75,5 @@ A standalone version of the same lesson. Same example, same claims, written in c
 - [x] 25 对齐在执行里表现为什么：拒绝、确认、边界（2026-11-05，/2026/11/05/refusal-confirm-boundary/）
 - [x] 26 基准数字在说什么，又没说什么（2026-11-06，/2026/11/06/what-the-number-counts/）
 - [x] 27 把一个最小循环接到自己的仓库（2026-11-07，/2026/11/07/attach-the-smallest-loop/）
-- [ ] 28 从这一系列里留下可以自己改的一张执行图
+- [x] 28 从这一系列里留下可以自己改的一张执行图（2026-11-08，/2026/11/08/diagram-you-can-edit/）
+- [ ] 29 拿这一次的轨迹核对这张图还在不在
