@@ -77,4 +77,5 @@ A standalone version of the same lesson. Same example, same claims, written in c
 - [x] 27 把一个最小循环接到自己的仓库（2026-11-07，/2026/11/07/attach-the-smallest-loop/）
 - [x] 28 从这一系列里留下可以自己改的一张执行图（2026-11-08，/2026/11/08/diagram-you-can-edit/）
 - [x] 29 拿这一次的轨迹核对这张图还在不在（2026-11-09，/2026/11/09/trace-against-the-diagram/）
-- [ ] 30 对不上时，先改那一格指着的文件，再用新轨迹看它变没变
+- [x] 30 对不上时，先改那一格指着的文件，再用新轨迹看它变没变（2026-11-10，/2026/11/10/the-file-the-cell-points-at/）
+- [ ] 31 这一格指着的文件里，它读到的那一句才算改到；没读到的字，新轨迹里这一格仍是旧的
