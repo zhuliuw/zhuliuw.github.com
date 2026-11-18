@@ -1,0 +1,36 @@
+---
+import { formatDateShort, postHref, type Post } from '../lib/blog';
+
+interface Props {
+  posts: Post[];
+  compact?: boolean;
+}
+
+const { posts, compact = false } = Astro.props;
+---
+
+<ol class:list={['entry-list', { compact }]}>
+  {
+    posts.map((post) => {
+      const tag = post.data.tags[0] ?? post.data.category;
+      return (
+        <li class="entry">
+          <div class="entry-meta">
+            <time datetime={post.data.pubDate.toISOString()}>{formatDateShort(post.data.pubDate)}</time>
+            <a class="chip" href={`/tags/${encodeURIComponent(tag)}/`}>
+              {tag}
+            </a>
+          </div>
+          <div class="entry-body">
+            <h2>
+              <a href={postHref(post)} title={post.data.title}>
+                {post.data.title}
+              </a>
+            </h2>
+            {!compact && <p title={post.data.description}>{post.data.description}</p>}
+          </div>
+        </li>
+      );
+    })
+  }
+</ol>

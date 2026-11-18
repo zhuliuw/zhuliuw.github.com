@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import EntryList from '../../components/EntryList.astro';
+import Pagination from '../../components/Pagination.astro';
+import { getPosts, homePageHref, pageCount, pageSlice } from '../../lib/blog';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const total = pageCount(posts.length);
+  return Array.from({ length: Math.max(0, total - 1) }, (_, index) => ({
+    params: { page: String(index + 2) },
+  }));
+}
+
+const page = Number(Astro.params.page);
+const posts = await getPosts();
+const slice = pageSlice(posts, page);
+---
+
+<Base
+  title={`文章 · 第 ${slice.page} 页`}
+  description={`zhuliuwu 的文章，第 ${slice.page} 页，共 ${slice.totalPages} 页。`}
+  prev={homePageHref(slice.page - 1)}
+  next={slice.page < slice.totalPages ? homePageHref(slice.page + 1) : undefined}
+>
+  <section class="masthead">
+    <div>
+      <p class="eyebrow">生活 · 运动 · 户外</p>
+      <h1>热爱生活。</h1>
+      <p class="lede">
+        热爱运动，热爱户外，喜欢探索新事物，不安于现状。我是 zhuliuwu，把还想记住的东西写在这里。
+      </p>
+    </div>
+    <div class="stamp" aria-hidden="true">2012</div>
+  </section>
+
+  <section aria-labelledby="writing-label">
+    <div class="section-label">
+      <h2 id="writing-label">文章</h2>
+      <p>
+        {slice.from}–{slice.to} / {slice.total}
+        <a href="/archive/">全部归档</a>
+      </p>
+    </div>
+    <EntryList posts={slice.items} />
+    <Pagination page={slice.page} totalPages={slice.totalPages} hrefFor={homePageHref} />
+  </section>
+</Base>

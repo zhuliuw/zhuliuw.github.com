@@ -1,0 +1,47 @@
+---
+import Base from '../../../layouts/Base.astro';
+import EntryList from '../../../components/EntryList.astro';
+import Pagination from '../../../components/Pagination.astro';
+import { getPosts, pageSlice, tagPageHref } from '../../../lib/blog';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const names = new Set<string>();
+  for (const post of posts) {
+    names.add(post.data.category);
+    for (const tag of post.data.tags) names.add(tag);
+  }
+  return [...names].map((tag) => ({
+    params: { tag },
+    props: { tag },
+  }));
+}
+
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+const matched = (await getPosts()).filter(
+  (post) => post.data.category === tag || post.data.tags.includes(tag),
+);
+const slice = pageSlice(matched, 1);
+const hrefFor = (page: number) => tagPageHref(tag, page);
+---
+
+<Base
+  title={tag}
+  description={`标签「${tag}」下的文章，共 ${slice.total} 篇。`}
+  next={slice.totalPages > 1 ? hrefFor(2) : undefined}
+>
+  <div class="page">
+    <p class="eyebrow">Tag</p>
+    <h1>{tag}</h1>
+    <p class="intro">
+      {slice.total} 篇
+      {slice.totalPages > 1 && ` · 第 ${slice.from}–${slice.to} 篇`}
+    </p>
+    <EntryList posts={slice.items} />
+    <Pagination page={slice.page} totalPages={slice.totalPages} hrefFor={hrefFor} />
+  </div>
+</Base>

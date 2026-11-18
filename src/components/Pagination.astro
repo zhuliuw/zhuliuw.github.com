@@ -1,0 +1,54 @@
+---
+import { pageWindow } from '../lib/blog';
+
+interface Props {
+  page: number;
+  totalPages: number;
+  hrefFor: (page: number) => string;
+}
+
+const { page, totalPages, hrefFor } = Astro.props;
+const numbers = pageWindow(page, totalPages);
+---
+
+{
+  totalPages > 1 && (
+    <nav class="pages" aria-label="分页">
+      {page > 1 ? (
+        <a class="pages-edge" href={hrefFor(page - 1)} rel="prev">
+          较新
+        </a>
+      ) : (
+        <span class="pages-edge" aria-disabled="true">
+          较新
+        </span>
+      )}
+      <ol>
+        {numbers.map((item) =>
+          item === 'gap' ? (
+            <li class="pages-gap" aria-hidden="true">
+              …
+            </li>
+          ) : item === page ? (
+            <li>
+              <span aria-current="page">{item}</span>
+            </li>
+          ) : (
+            <li>
+              <a href={hrefFor(item)}>{item}</a>
+            </li>
+          ),
+        )}
+      </ol>
+      {page < totalPages ? (
+        <a class="pages-edge" href={hrefFor(page + 1)} rel="next">
+          较早
+        </a>
+      ) : (
+        <span class="pages-edge" aria-disabled="true">
+          较早
+        </span>
+      )}
+    </nav>
+  )
+}

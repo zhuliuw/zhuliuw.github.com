@@ -139,8 +139,12 @@ a:hover {
 }
 
 .masthead {
-  padding: 4.2rem 0 2.6rem;
-  max-width: 40rem;
+  display: grid;
+  grid-template-columns: minmax(0, 40rem) auto;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem 2.5rem;
+  padding: 3.1rem 0 2.1rem;
 }
 
 .eyebrow {
@@ -154,10 +158,10 @@ a:hover {
 .masthead h1 {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  font-size: clamp(2.35rem, 5.4vw, 3.5rem);
   font-weight: 600;
   letter-spacing: -0.045em;
-  line-height: 1.08;
+  line-height: 1.12;
 }
 
 .lede {
@@ -173,12 +177,31 @@ a:hover {
   justify-content: space-between;
   gap: 1rem;
   margin: 0.5rem 0 0;
-  padding-top: 0.4rem;
+  padding-top: 0.55rem;
   border-top: 1px solid var(--ink);
   font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.section-label h2,
+.section-label p {
+  margin: 0;
+  font-size: inherit;
+  font-weight: 500;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+.section-label a {
+  margin-left: 0.9rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.section-label a:hover {
+  color: var(--cinnabar);
 }
 
 .entry-list {
@@ -189,42 +212,126 @@ a:hover {
 
 .entry {
   display: grid;
-  grid-template-columns: 7.2rem 1fr auto;
-  gap: 1.25rem;
-  align-items: baseline;
-  padding: 1.35rem 0;
+  grid-template-columns: 7.4rem minmax(0, 1fr);
+  gap: 0.35rem 1.5rem;
+  align-items: start;
+  padding: 1.15rem 0 1.2rem;
   border-bottom: 1px solid var(--line);
+}
+
+.entry-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-top: 0.28rem;
 }
 
 .entry time {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
-  font-size: 0.92rem;
+  font-size: 0.86rem;
+  letter-spacing: 0.01em;
 }
 
 .entry h2 {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: 1.55rem;
+  font-size: 1.28rem;
   font-weight: 600;
   letter-spacing: -0.03em;
-  line-height: 1.25;
+  line-height: 1.35;
 }
 
 .entry h2 a {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   text-decoration: none;
 }
 
 .entry p {
-  margin: 0.35rem 0 0;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  margin: 0.28rem 0 0;
   color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.compact .entry {
+  padding: 0.72rem 0;
+}
+
+.compact .entry h2 {
+  font-size: 1.12rem;
 }
 
 .chip {
   color: var(--cinnabar);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
   text-decoration: none;
   white-space: nowrap;
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0.2rem 0 0.4rem;
+  padding: 1rem 0 0.2rem;
+}
+
+.pages ol {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pages a,
+.pages span {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.1rem;
+  height: 2.1rem;
+  padding: 0 0.45rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--muted);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.92rem;
+}
+
+.pages a:hover {
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.pages [aria-current='page'] {
+  border-color: var(--cinnabar);
+  background: var(--cinnabar-soft);
+  color: var(--cinnabar);
+}
+
+.pages .pages-edge {
+  min-width: 3.4rem;
+}
+
+.pages [aria-disabled='true'] {
+  opacity: 0.38;
+}
+
+.pages-gap {
+  letter-spacing: 0.08em;
 }
 
 .page {
@@ -405,7 +512,7 @@ a:hover {
   place-items: center;
   width: 3.1rem;
   height: 3.1rem;
-  margin-top: 1.6rem;
+  margin: 0 0.2rem 0.35rem 0;
   border: 2px solid var(--stamp);
   color: var(--stamp);
   border-radius: 4px;
@@ -432,12 +539,40 @@ a:hover {
     gap: 0.8rem;
   }
 
-  .entry {
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
+  .masthead {
+    grid-template-columns: 1fr auto;
+    padding-top: 2.2rem;
   }
 
-  .masthead {
-    padding-top: 2.4rem;
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .entry-meta {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.85rem;
+    padding-top: 0;
+  }
+
+  .pages {
+    gap: 0.35rem;
+  }
+
+  .pages ol {
+    flex-wrap: nowrap;
+    gap: 0.15rem;
+  }
+
+  .pages a,
+  .pages span {
+    min-width: 1.7rem;
+    height: 1.85rem;
+    padding: 0 0.15rem;
+  }
+
+  .pages .pages-edge {
+    min-width: 2.5rem;
   }
 }

@@ -1,0 +1,53 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import EntryList from '../../../../components/EntryList.astro';
+import Pagination from '../../../../components/Pagination.astro';
+import { getPosts, pageCount, pageSlice, tagPageHref } from '../../../../lib/blog';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const names = new Set<string>();
+  for (const post of posts) {
+    names.add(post.data.category);
+    for (const tag of post.data.tags) names.add(tag);
+  }
+  const paths: { params: { tag: string; page: string }; props: { tag: string } }[] = [];
+  for (const tag of names) {
+    const count = posts.filter((post) => post.data.category === tag || post.data.tags.includes(tag)).length;
+    const pages = pageCount(count);
+    for (let page = 2; page <= pages; page += 1) {
+      paths.push({ params: { tag, page: String(page) }, props: { tag } });
+    }
+  }
+  return paths;
+}
+
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+const page = Number(Astro.params.page);
+const matched = (await getPosts()).filter(
+  (post) => post.data.category === tag || post.data.tags.includes(tag),
+);
+const slice = pageSlice(matched, page);
+const hrefFor = (number: number) => tagPageHref(tag, number);
+---
+
+<Base
+  title={`${tag} · 第 ${slice.page} 页`}
+  description={`标签「${tag}」下的文章，第 ${slice.page} 页，共 ${slice.totalPages} 页。`}
+  prev={hrefFor(slice.page - 1)}
+  next={slice.page < slice.totalPages ? hrefFor(slice.page + 1) : undefined}
+>
+  <div class="page">
+    <p class="eyebrow">Tag</p>
+    <h1>{tag}</h1>
+    <p class="intro">
+      {slice.total} 篇 · 第 {slice.from}–{slice.to} 篇
+    </p>
+    <EntryList posts={slice.items} />
+    <Pagination page={slice.page} totalPages={slice.totalPages} hrefFor={hrefFor} />
+  </div>
+</Base>

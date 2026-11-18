@@ -7,9 +7,11 @@ interface Props {
   title: string;
   description: string;
   ogType?: 'website' | 'article';
+  prev?: string;
+  next?: string;
 }
 
-const { title, description, ogType = 'website' } = Astro.props;
+const { title, description, ogType = 'website', prev, next } = Astro.props;
 const fullTitle = title === 'zhuliuwu' ? title : `${title} · zhuliuwu`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -22,6 +24,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {prev && <link rel="prev" href={new URL(prev, Astro.site)} />}
+    {next && <link rel="next" href={new URL(next, Astro.site)} />}
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
